@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUVO Battery Monitoring System</title>
+    <title>NUVO Akü İzleme Sistemi</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 
@@ -12,11 +12,14 @@
     <header>
         <div class="header-content">
             <span>nuvo</span>
-            <img src="k.png" alt="Profil Resmi" class="profile-pic">
+            <div class="right-content">
+                <img src="icon/profilepicture.png" alt="Profil Resmi" class="profile-pic">
+                <img src="icon/logout.png" alt="Logo" class="logo-link" id="logo-link">
+            </div>
         </div>
     </header>
     <aside class="sidebar">
-        <img src="b.png" alt="Logo" class="logo">
+        <img src="icon/logonovo.png" alt="Logo" class="logo">
         <h2>NUVO AKÜ İZLEME SİSTEMİ</h2>
         <div class="dropdown-content">
             <a href="#">Öğe 1</a>
@@ -26,7 +29,12 @@
             <a href="#">Öğe 5</a>
         </div>
     </aside>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('logo-link').addEventListener('click', function () {
+            window.location.href = 'login.html';
+        });
+
+    </script>
 </body>
 
 </html>
