@@ -17,7 +17,6 @@ header {
     /* Header'ın yüksekliğini sabitleme (önceki 70px idi) */
 }
 
-
 .header-content {
     display: flex;
     align-items: center;
@@ -78,7 +77,6 @@ header {
     /* Sağ kenarlarını kavisli yapma */
 }
 
-
 .sidebar .logo {
     width: 100px;
     height: auto;
@@ -102,7 +100,6 @@ header {
     /* Genişliği biraz daha daraltma */
     text-align: center;
 }
-
 
 .dropdown-content a {
     color: #333;
@@ -131,7 +128,6 @@ main {
     margin-top: 20px;
     /* Header'ın altına boşluk ekleme */
 }
-
 
 .battery-grid {
     display: flex;

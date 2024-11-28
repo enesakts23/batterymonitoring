@@ -30,24 +30,54 @@
         </div>
     </aside>
     <main class="content">
-        <div class="battery-grid">
-            <!-- Burada 10 adet dikdörtgen için döngü ile eleman oluşturulacak -->
-            <div class="battery-box" data-number="1"></div>
-            <div class="battery-box" data-number="2"></div>
-            <div class="battery-box" data-number="3"></div>
-            <div class="battery-box" data-number="4"></div>
-            <div class="battery-box" data-number="5"></div>
-            <div class="battery-box" data-number="6"></div>
-            <div class="battery-box" data-number="7"></div>
-            <div class="battery-box" data-number="8"></div>
-            <div class="battery-box" data-number="9"></div>
-            <div class="battery-box" data-number="10"></div>
-        </div>
+        <div class="battery-grid" id="battery-grid"></div>
     </main>
     <script>
         document.getElementById('logo-link').addEventListener('click', function () {
             window.location.href = 'login.html';
         });
+
+        const temperatureData = [22, 23, 21, 20, 24, 25, 23, 22, 21, 20];
+        const voltageData = [3.7, 3.8, 3.6, 3.9, 3.8, 3.7, 3.6, 3.9, 3.8, 3.7];
+        const batteryGrid = document.getElementById('battery-grid');
+
+        for (let i = 1; i <= 10; i++) {
+            const batteryBox = document.createElement('div');
+            batteryBox.className = 'battery-box';
+            batteryBox.dataset.number = i;
+
+            const batteryValues = document.createElement('div');
+            batteryValues.className = 'battery-values';
+
+            const tempLabel = document.createElement('span');
+            tempLabel.className = 'value-label';
+            tempLabel.textContent = 'T: ';
+
+            const tempValue = document.createElement('span');
+            tempValue.className = 'value';
+            tempValue.id = `temperature${i}`;
+            tempValue.textContent = `${temperatureData[i - 1]}°C`;
+
+            const br1 = document.createElement('br');
+
+            const voltLabel = document.createElement('span');
+            voltLabel.className = 'value-label';
+            voltLabel.textContent = 'V: ';
+
+            const voltValue = document.createElement('span');
+            voltValue.className = 'value';
+            voltValue.id = `voltage${i}`;
+            voltValue.textContent = `${voltageData[i - 1]}V`;
+
+            batteryValues.appendChild(tempLabel);
+            batteryValues.appendChild(tempValue);
+            batteryValues.appendChild(br1);
+            batteryValues.appendChild(voltLabel);
+            batteryValues.appendChild(voltValue);
+
+            batteryBox.appendChild(batteryValues);
+            batteryGrid.appendChild(batteryBox);
+        }
     </script>
 </body>
 
