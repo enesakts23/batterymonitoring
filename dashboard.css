@@ -5,16 +5,12 @@ body {
 
 header {
     background-color: #4CAF50;
-    /* Yeni renk */
     color: white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    /* Elemanları iki uç noktaya dağıt */
     border-radius: 0 0 20px 20px;
-    /* Alt kenarları kavisli yapma */
     height: 30px;
-    /* Header'ın yüksekliğini sabitleme (önceki 70px idi) */
 }
 
 .header-content {
@@ -22,7 +18,6 @@ header {
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    /* Elemanları iki uç noktaya dağıt */
 }
 
 .left-content,
@@ -33,7 +28,6 @@ header {
 
 .header-content span {
     margin-left: 10px;
-    /* Sol tarafta biraz boşluk bırak */
 }
 
 .logo-link {
@@ -41,7 +35,6 @@ header {
     height: 30px;
     cursor: pointer;
     margin-left: 10px;
-    /* Sağ tarafta biraz boşluk bırak */
 }
 
 .profile-pic {
@@ -49,7 +42,6 @@ header {
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
-    /* Sol tarafta biraz boşluk bırak */
 }
 
 .right-content {
@@ -59,13 +51,11 @@ header {
 
 .sidebar {
     width: 200px;
-    /* Genişliği biraz daraltma */
     position: absolute;
     left: 0;
     top: 0;
     padding: 20px;
     background-color: #f0f0f0;
-    /* Daha havalı bir beyaz renk */
     height: 100%;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     color: black;
@@ -74,7 +64,6 @@ header {
     align-items: center;
     transition: transform 0.3s ease;
     border-radius: 0 20px 20px 0;
-    /* Sağ kenarlarını kavisli yapma */
 }
 
 .sidebar .logo {
@@ -97,7 +86,6 @@ header {
 .dropdown-content {
     margin-top: 10px;
     width: 100%;
-    /* Genişliği biraz daha daraltma */
     text-align: center;
 }
 
@@ -108,55 +96,56 @@ header {
     display: block;
     transition: background-color 0.3s;
     border-bottom: 1px solid #ddd;
-    /* Alt çizgi ekleme */
 }
 
 .dropdown-content a:last-child {
     border-bottom: none;
-    /* Son öğenin alt çizgisini kaldır */
 }
 
 .dropdown-content a:hover {
     background-color: #e0e0e0;
-    /* Hover için hafif gri ton */
 }
 
 main {
     margin-left: 250px;
-    /* Kenar çubuğunun genişliği kadar boşluk bırak */
     padding: 20px;
     margin-top: 20px;
-    /* Header'ın altına boşluk ekleme */
 }
 
 .battery-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
-    /* Elemanları ortala */
+    justify-content: flex-start;
 }
 
 .battery-box {
-    width: 200px;
-    height: 100px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
+    width: 150px;
+    height: 80px;
+    background-color: #d4d4d4;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+}
+
+.battery-box .battery-values {
+    text-align: center;
 }
 
 .battery-box::before {
     content: attr(data-number);
     position: absolute;
-    top: -20px;
+    top: -10px;
     background-color: #4CAF50;
     color: white;
     padding: 5px 10px;
     border-radius: 20px;
+    font-size: 16px;
 }
