@@ -30,21 +30,37 @@
         </div>
     </aside>
     <main class="content">
-        <div class="battery-grid" id="battery-grid"></div>
+        <div id="String-1" class="string-1">
+            <div class="battery-grid" id="battery-grid1"></div>
+        </div>
     </main>
     <script>
         document.getElementById('logo-link').addEventListener('click', function () {
             window.location.href = 'login.html';
         });
 
-        const temperatureData = [22, 23, 21, 20, 24, 25, 23, 22, 21, 20, 24, 25, 26, 27, 28, 29];
-        const voltageData = [3.7, 3.8, 3.6, 3.9, 3.8, 3.7, 3.6, 3.9, 3.8, 3.7, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5];
-        const batteryGrid = document.getElementById('battery-grid');
+        const temperatureData = [22, 23, 21, 20, 24, 25, 23, 22, 21, 20, 24, 25, 26, 27, 28, 29, 30, 31];
+        const voltageData = [3.7, 3.8, 3.6, 3.9, 3.8, 3.7, 3.6, 3.9, 3.8, 3.7, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7];
+        
+        let stringCount = 1;
+        let batteryGrid = document.getElementById('battery-grid1');
 
-        for (let i = 1; i <= 16; i++) {
+        for (let i = 0; i < temperatureData.length; i++) {
+            if (i % 16 === 0 && i !== 0) {
+                stringCount++;
+                batteryGrid = document.createElement('div');
+                batteryGrid.className = 'battery-grid';
+                batteryGrid.id = `battery-grid${stringCount}`;
+                const stringDiv = document.createElement('div');
+                stringDiv.className = 'string-1';
+                stringDiv.id = `String-${stringCount}`;
+                stringDiv.appendChild(batteryGrid);
+                document.querySelector('main').appendChild(stringDiv);
+            }
+
             const batteryBox = document.createElement('div');
             batteryBox.className = 'battery-box';
-            batteryBox.dataset.number = i;
+            batteryBox.dataset.number = (i % 16) + 1;
 
             const batteryValues = document.createElement('div');
             batteryValues.className = 'battery-values';
@@ -55,8 +71,8 @@
 
             const tempValue = document.createElement('span');
             tempValue.className = 'value';
-            tempValue.id = `temperature${i}`;
-            tempValue.textContent = `${temperatureData[i - 1]}°C`;
+            tempValue.id = `temperature${(i % 16) + 1}`;
+            tempValue.textContent = `${temperatureData[i]}°C`;
 
             const br1 = document.createElement('br');
 
@@ -66,8 +82,8 @@
 
             const voltValue = document.createElement('span');
             voltValue.className = 'value';
-            voltValue.id = `voltage${i}`;
-            voltValue.textContent = `${voltageData[i - 1]}V`;
+            voltValue.id = `voltage${(i % 16) + 1}`;
+            voltValue.textContent = `${voltageData[i]}V`;
 
             batteryValues.appendChild(tempLabel);
             batteryValues.appendChild(tempValue);
@@ -79,7 +95,6 @@
             batteryGrid.appendChild(batteryBox);
         }
     </script>
-
 </body>
 
 </html>

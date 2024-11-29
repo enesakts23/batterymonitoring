@@ -1,3 +1,5 @@
+/* Mevcut CSS kodları */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -148,4 +150,16 @@ main {
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 16px;
+}
+
+/* Yeni eklenen stil */
+.string-1 {
+    border: 2px solid #4CAF50;
+    /* İnce dikdörtgen çerçeve */
+    border-radius: 10px;
+    /* Kenarları kavisli yapma */
+    padding: 10px;
+    /* İç boşluk ekleme */
+    margin: 10px;
+    /* Dış boşluk ekleme */
 }
