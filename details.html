@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batarya Detaylı Veriler</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        /* Sayfanın aşağıya kaydırılmasını devre dışı bırakma */
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        main.content {
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* Sola hizala */
+            justify-content: flex-start;
+            /* Üste hizala */
+            padding: 20px;
+        }
+
+        #battery-title {
+            margin-top: 0;
+        }
+
+        #temp-chart,
+        #voltage-chart {
+            width: 100%;
+            /* Grafik genişliğini sayfa genişliğine ayarla */
+            height: 250px;
+            /* Grafik yüksekliğini azaltma */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <span>nuvo</span>
+            <div class="right-content">
+                <img src="icon/profilepicture.png" alt="Profil Resmi" class="profile-pic">
+                <img src="icon/logout.png" alt="Logo" class="logo-link" id="logo-link">
+            </div>
+        </div>
+    </header>
+    <aside class="sidebar">
+        <img src="icon/logonovo.png" alt="Logo" class="logo">
+        <h2>NUVO AKÜ İZLEME SİSTEMİ</h2>
+        <div class="dropdown-content">
+            <a href="#">Önizleme</a>
+            <a href="#">Alarmlar</a>
+            <a href="#">Detaylı veriler</a>
+            <a href="#">Öğe 4</a>
+            <a href="#">Öğe 5</a>
+        </div>
+    </aside>
+    <main class="content">
+        <h2 id="battery-title">Batarya Detaylı Veriler</h2>
+        <div id="temp-chart"></div>
+        <div id="voltage-chart"></div>
+    </main>
+    <script>
+        // URL'den batarya numarasını ve string numarasını al
+        const urlParams = new URLSearchParams(window.location.search);
+        const batteryNumber = urlParams.get('battery');
+        const stringNumber = urlParams.get('string');
+
+        // Başlığı ayarla
+        document.getElementById('battery-title').textContent = `Batarya-${batteryNumber} Detaylı Veriler (String ${stringNumber})`;
+
+        // Örnek sıcaklık verileri
+        const temperatureData = [22, 23, 21, 20, 24, 25, 26, 27, 28, 29, 30, 31];
+        const voltageData = [3.7, 3.8, 3.6, 3.9, 3.8, 3.7, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5];
+
+        // Sıcaklık grafiği
+        var optionsTemp = {
+            chart: {
+                type: 'line',
+                height: '250px', // Grafik yüksekliğini ayarlama
+                width: '100%' // Grafik genişliğini ayarlama
+            },
+            series: [{
+                name: 'Sıcaklık',
+                data: temperatureData,
+                color: '#1E90FF' // Açık mavi renk
+            }],
+            xaxis: {
+                categories: Array.from({ length: temperatureData.length }, (_, i) => i + 1)
+            },
+            title: {
+                text: 'Günlük Sıcaklık Verileri'
+            }
+        };
+
+        var chartTemp = new ApexCharts(document.querySelector("#temp-chart"), optionsTemp);
+        chartTemp.render();
+
+        // Voltaj grafiği
+        var optionsVoltage = {
+            chart: {
+                type: 'line',
+                height: '250px', // Grafik yüksekliğini ayarlama
+                width: '100%' // Grafik genişliğini ayarlama
+            },
+            series: [{
+                name: 'Voltaj',
+                data: voltageData,
+                color: '#FFA500' // Turuncu renk
+            }],
+            xaxis: {
+                categories: Array.from({ length: voltageData.length }, (_, i) => i + 1)
+            },
+            title: {
+                text: 'Günlük Voltaj Verileri'
+            }
+        };
+
+        var chartVoltage = new ApexCharts(document.querySelector("#voltage-chart"), optionsVoltage);
+        chartVoltage.render();
+    </script>
+</body>
+
+</html>
