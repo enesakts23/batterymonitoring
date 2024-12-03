@@ -3,21 +3,33 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
+    /* Beyaz arka plan rengi */
 }
 
 .sidebar {
     width: 250px;
-    background: #2c3e50;
-    color: #ecf0f1;
+    background: #ffffff;
+    /* Beyaz arka plan rengi */
+    color: #2c3e50;
+    /* Koyu metin rengi */
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Hafif gölge efekti */
 }
 
 .sidebar-header {
     text-align: center;
     padding: 20px 0;
+}
+
+.sidebar-logo {
+    max-width: 100px;
+    /* Logonun maksimum genişliği */
+    margin-bottom: 10px;
+    /* Logo ile metin arası boşluk */
 }
 
 .sidebar ul {
@@ -28,7 +40,8 @@ body {
 
 .sidebar ul li {
     padding: 15px 20px;
-    border-bottom: 1px solid #34495e;
+    border-bottom: 1px solid #f0f0f0;
+    /* Hafif gri alt çizgi */
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -39,7 +52,8 @@ body {
 }
 
 .sidebar ul li:hover {
-    background: #34495e;
+    background: #f0f0f0;
+    /* Hafif gri arka plan rengi */
 }
 
 main {

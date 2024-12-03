@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Rastgele bir hata simülasyonu
         if (Math.random() < 0.3) { // %30 hata olasılığı
             var faultyIndex = Math.floor(Math.random() * notifications.length);
-            notifications[faultyIndex] = { message: 'Sorun: Aküde voltaj değeri yüksek', type: 'fault' };
+            var faultyBatteryId = Math.floor(Math.random() * batteryCount) + 1; // 1 ile batteryCount arasında rastgele bir akü seç
+            notifications[faultyIndex] = { message: `Sorun: Akü ${faultyBatteryId} voltaj değeri yüksek`, type: 'fault' };
         }
 
         // Zaman damgası ekleme
@@ -64,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // İlk bildirim güncellemesini hemen yap
-    updateNotifications();
+    // İlk çalıştırıldığında bildirimleri boş bırak
+    document.getElementById("notification-list").innerHTML = '';
 
     // Her 60 saniyede bir bildirim verilerini güncelle
     setInterval(updateNotifications, 60000);
