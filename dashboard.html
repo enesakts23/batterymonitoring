@@ -1,104 +1,65 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUVO Akü İzleme Sistemi</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="header-content">
-            <span>nuvo</span>
-            <div class="right-content">
-                <img src="icon/profilepicture.png" alt="Profil Resmi" class="profile-pic">
-                <img src="icon/logout.png" alt="Logo" class="logo-link" id="logo-link">
-            </div>
-        </div>
-    </header>
     <aside class="sidebar">
-        <img src="icon/logonovo.png" alt="Logo" class="logo">
-        <h2>NUVO AKÜ İZLEME SİSTEMİ</h2>
-        <div class="dropdown-content">
-            <a href="#">Önizleme</a>
-            <a href="#">Alarmlar</a>
-            <a href="#">Detaylı veriler</a>
-            <a href="#">Öğe 4</a>
-            <a href="#">Öğe 5</a>
+        <div class="sidebar-header">
+            <h2>Horizon</h2>
         </div>
+        <ul>
+            <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+            <li><i class="fas fa-store"></i> NFT Marketplace</li>
+            <li><i class="fas fa-table"></i> Tables</li>
+            <li><i class="fas fa-tasks"></i> Kanban</li>
+            <li><i class="fas fa-user"></i> Profile</li>
+            <li><i class="fas fa-sign-in-alt"></i> Sign In</li>
+            <li><i class="fas fa-user-plus"></i> Sign Up</li>
+        </ul>
     </aside>
-    <main class="content">
-        <div id="String-1" class="string-1">
-            <div class="battery-grid" id="battery-grid1"></div>
-        </div>
+    <main>
+        <header>
+            <input type="text" placeholder="Search...">
+            <div class="icons">
+                <div class="icon flag-icon"></div>
+                <div class="icon bell-icon"><span class="notification-dot"></span></div>
+                <div class="icon profile-icon"></div>
+            </div>
+        </header>
+        <section class="container">
+            <div class="widget battery">
+                <h3>Battery Count</h3>
+                <p id="battery-count">16</p> <!-- Toplam akü sayısı -->
+            </div>
+            <div class="widget operational-battery">
+                <h3>Operational Batteries</h3>
+                <p id="operational-battery-count">15</p> <!-- Çalışan akü sayısı -->
+            </div>
+            <div class="widget faulty-battery">
+                <h3>Faulty Batteries</h3>
+                <p id="faulty-battery-count">1</p> <!-- Bozuk akü sayısı -->
+            </div>
+            <div class="widget battery-health">
+                <h3>Genel Akü Sağlığı</h3>
+                <div id="battery-health-chart"></div>
+            </div>
+            <div class="widget notifications full-width">
+                <h3>Bildirimler</h3>
+                <ul id="notification-list">
+                    <li>Yükleniyor...</li>
+                </ul>
+            </div>
+        </section>
     </main>
-    <script>
-        document.getElementById('logo-link').addEventListener('click', function () {
-            window.location.href = 'login.html';
-        });
-
-        const temperatureData = [22, 23, 21, 20, 24, 25, 23, 22, 21, 20, 24, 25, 26, 27, 28, 29, 30, 31];
-        const voltageData = [3.7, 3.8, 3.6, 3.9, 3.8, 3.7, 3.6, 3.9, 3.8, 3.7, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7];
-
-        let stringCount = 1;
-        let batteryGrid = document.getElementById('battery-grid1');
-
-        for (let i = 0; i < temperatureData.length; i++) {
-            if (i % 16 === 0 && i !== 0) {
-                stringCount++;
-                batteryGrid = document.createElement('div');
-                batteryGrid.className = 'battery-grid';
-                batteryGrid.id = `battery-grid${stringCount}`;
-                const stringDiv = document.createElement('div');
-                stringDiv.className = 'string-1';
-                stringDiv.id = `String-${stringCount}`;
-                stringDiv.appendChild(batteryGrid);
-                document.querySelector('main').appendChild(stringDiv);
-            }
-
-            const batteryBox = document.createElement('div');
-            batteryBox.className = 'battery-box';
-            batteryBox.dataset.number = (i % 16) + 1;
-            batteryBox.dataset.string = stringCount;
-            batteryBox.addEventListener('click', function () {
-                window.location.href = `details.html?battery=${(i % 16) + 1}&string=${batteryBox.dataset.string}`;
-            });
-
-            const batteryValues = document.createElement('div');
-            batteryValues.className = 'battery-values';
-
-            const tempLabel = document.createElement('span');
-            tempLabel.className = 'value-label';
-            tempLabel.textContent = 'T: ';
-
-            const tempValue = document.createElement('span');
-            tempValue.className = 'value';
-            tempValue.id = `temperature${(i % 16) + 1}`;
-            tempValue.textContent = `${temperatureData[i]}°C`;
-
-            const br1 = document.createElement('br');
-
-            const voltLabel = document.createElement('span');
-            voltLabel.className = 'value-label';
-            voltLabel.textContent = 'V: ';
-
-            const voltValue = document.createElement('span');
-            voltValue.className = 'value';
-            voltValue.id = `voltage${(i % 16) + 1}`;
-            voltValue.textContent = `${voltageData[i]}V`;
-
-            batteryValues.appendChild(tempLabel);
-            batteryValues.appendChild(tempValue);
-            batteryValues.appendChild(br1);
-            batteryValues.appendChild(voltLabel);
-            batteryValues.appendChild(voltValue);
-
-            batteryBox.appendChild(batteryValues);
-            batteryGrid.appendChild(batteryBox);
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="dashboard.js"></script>
 </body>
 
 </html>
