@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const battery = document.createElement("div");
         battery.className = "battery";
 
-        const temperature = document.createElement("p");
+        const temperature = document.createElement("div");
         temperature.className = "battery-info";
-        temperature.innerHTML = `<i class="fas fa-thermometer-half"></i> T: ${data.temperature}`;
+        temperature.innerHTML = `<i class="fas fa-thermometer-half"></i> T: <input type="text" value="${data.temperature}" class="temp-input">`;
 
-        const voltage = document.createElement("p");
+        const voltage = document.createElement("div");
         voltage.className = "battery-info";
-        voltage.innerHTML = `<i class="fas fa-bolt"></i> V: ${data.voltage}`;
+        voltage.innerHTML = `<i class="fas fa-bolt"></i> V: <input type="text" value="${data.voltage}" class="volt-input">`;
 
         battery.appendChild(temperature);
         battery.appendChild(voltage);

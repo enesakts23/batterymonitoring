@@ -22,7 +22,6 @@ body.battery-container-body {
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    /* Taşma durumu için kaydırmayı kaldırma */
 }
 
 .header {
@@ -40,12 +39,10 @@ body.battery-container-body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px 20px;
-    /* Yukarı-aşağı mesafeyi biraz daha azalttım */
     padding: 20px;
     background-color: #f0f0f0;
     position: relative;
     overflow: hidden;
-    /* Kaydırmayı kaldırma */
 }
 
 .battery-wrapper {
@@ -57,37 +54,31 @@ body.battery-container-body {
 
 .battery {
     width: 100px;
-    /* Boyutu biraz arttırdım */
     height: 70px;
-    /* Alta doğru genişletme */
     background-color: #ffffff;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    /* Değişiklik */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding-left: 10px;
+    padding: 10px;
+    /* Değişiklik */
     color: #34495e;
     font-weight: bold;
     border: 2px solid #3498db;
-    /* Mavi dış çerçeve */
     cursor: pointer;
-    /* Tıklanabilir olduğunu belirtmek için cursor */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    /* Geçiş efekti */
 }
 
 .battery:hover {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-    /* Üzerine gelindiğinde hafif beyazlık efekti */
 }
 
 .battery.clicked {
     background-color: #ffffff;
-    /* Tıklanınca arka plan rengini değiştir */
     color: #34495e;
-    /* Tıklanınca yazı rengini değiştir */
 }
 
 .battery-number {
@@ -103,9 +94,23 @@ body.battery-container-body {
     line-height: 1.2;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    /* Değişiklik */
+    width: 100%;
 }
 
 .battery-info i {
     margin-right: 5px;
     color: #34495e;
+}
+
+.temp-input,
+.volt-input {
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    padding: 2px 4px;
+    width: 50px;
+    text-align: center;
+    margin-left: 5px;
+    box-sizing: border-box;
 }
