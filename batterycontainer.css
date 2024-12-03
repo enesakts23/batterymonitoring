@@ -21,6 +21,8 @@ body.battery-container-body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    overflow: hidden;
+    /* Taşma durumu için kaydırmayı kaldırma */
 }
 
 .header {
@@ -37,11 +39,13 @@ body.battery-container-body {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 8px 20px;
+    /* Yukarı-aşağı mesafeyi biraz daha azalttım */
     padding: 20px;
     background-color: #f0f0f0;
-    overflow-y: auto;
     position: relative;
+    overflow: hidden;
+    /* Kaydırmayı kaldırma */
 }
 
 .battery-wrapper {
@@ -52,9 +56,9 @@ body.battery-container-body {
 }
 
 .battery {
-    width: 90px;
-    /* Biraz daraltma */
-    height: 60px;
+    width: 100px;
+    /* Boyutu biraz arttırdım */
+    height: 70px;
     /* Alta doğru genişletme */
     background-color: #ffffff;
     border-radius: 12px;
@@ -66,7 +70,8 @@ body.battery-container-body {
     padding-left: 10px;
     color: #34495e;
     font-weight: bold;
-    border: 1px solid #bdc3c7;
+    border: 2px solid #3498db;
+    /* Mavi dış çerçeve */
 }
 
 .battery-number {
