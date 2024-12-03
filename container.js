@@ -1,15 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Toplam akü sayısı, çalışan akü sayısı ve bozuk akü sayısı belirleme
     var batteryCount = 16;
     var operationalBatteryCount = 15;
     var faultyBatteryCount = 1;
 
-    // Akü sayılarını HTML'e ekleme
     document.getElementById("battery-count").textContent = batteryCount;
     document.getElementById("operational-battery-count").textContent = operationalBatteryCount;
     document.getElementById("faulty-battery-count").textContent = faultyBatteryCount;
 
-    // Genel akü sağlığı yüzdesi
     var batteryHealthPercentage = (operationalBatteryCount / batteryCount) * 100;
 
     var options = {
@@ -23,30 +20,25 @@ document.addEventListener("DOMContentLoaded", function () {
     var chart = new ApexCharts(document.querySelector("#battery-health-chart"), options);
     chart.render();
 
-    // Bildirim verilerini güncelleme fonksiyonu
     function updateNotifications() {
         var notificationList = document.getElementById("notification-list");
-        notificationList.innerHTML = ''; // Mevcut bildirimleri temizle
+        notificationList.innerHTML = '';
 
-        // Simüle edilmiş bildirim verileri
         var notifications = [
             { message: 'Aküler normal', type: 'normal' },
             { message: 'Aküler normal', type: 'normal' },
             { message: 'Aküler normal', type: 'normal' }
         ];
 
-        // Rastgele bir hata simülasyonu
-        if (Math.random() < 0.3) { // %30 hata olasılığı
+        if (Math.random() < 0.3) {
             var faultyIndex = Math.floor(Math.random() * notifications.length);
-            var faultyBatteryId = Math.floor(Math.random() * batteryCount) + 1; // 1 ile batteryCount arasında rastgele bir akü seç
+            var faultyBatteryId = Math.floor(Math.random() * batteryCount) + 1;
             notifications[faultyIndex] = { message: `Sorun: Akü ${faultyBatteryId} voltaj değeri yüksek`, type: 'fault' };
         }
 
-        // Zaman damgası ekleme
         var now = new Date();
         var timestamp = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
 
-        // Bildirimleri listeye ekleme
         notifications.forEach(function (notification) {
             var li = document.createElement("li");
             li.className = notification.type === 'fault' ? 'fault' : 'normal';
@@ -65,9 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // İlk çalıştırıldığında bildirimleri boş bırak
     document.getElementById("notification-list").innerHTML = '';
 
-    // Her 60 saniyede bir bildirim verilerini güncelle
     setInterval(updateNotifications, 60000);
 });

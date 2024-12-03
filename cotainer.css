@@ -1,0 +1,75 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.widget {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.widget.battery {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.widget.operational-battery {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.widget.faulty-battery {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+.widget.battery-health {
+    background-color: #ffffff;
+    color: #000;
+    border: 2px solid #27ae60;
+}
+
+.widget.notifications {
+    background-color: #ecf0f1;
+    color: #000;
+}
+
+.widget.full-width {
+    grid-column: span 2;
+}
+
+.widget.notifications ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.widget.notifications ul li {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widget.notifications ul li.normal {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.widget.notifications ul li.fault {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.widget.notifications ul li .timestamp {
+    font-size: 0.85em;
+    color: #ddd;
+}

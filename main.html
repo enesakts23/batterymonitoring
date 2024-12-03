@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="cotainer.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -33,11 +34,34 @@
         </header>
 
         <section class="container">
-            <!-- Diğer içerikler burada yer alabilir -->
+            <div class="widget battery">
+                <h3>Battery Count</h3>
+                <p id="battery-count">16</p>
+            </div>
+            <div class="widget operational-battery">
+                <h3>Operational Batteries</h3>
+                <p id="operational-battery-count">15</p>
+            </div>
+            <div class="widget faulty-battery">
+                <h3>Faulty Batteries</h3>
+                <p id="faulty-battery-count">1</p>
+            </div>
+            <div class="widget battery-health">
+                <h3>Genel Akü Sağlığı</h3>
+                <div id="battery-health-chart"></div>
+            </div>
+            <div class="widget notifications full-width">
+                <h3>Bildirimler</h3>
+                <ul id="notification-list">
+                    <li>Yükleniyor...</li>
+                </ul>
+            </div>
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="main.js"></script>
+    <script src="container.js"></script>
 </body>
 
 </html>
