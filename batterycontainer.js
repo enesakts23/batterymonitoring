@@ -44,5 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
         batteryWrapper.appendChild(batteryNumber);
         batteryWrapper.appendChild(battery);
         batteryContainer.appendChild(batteryWrapper);
+
+        battery.addEventListener("click", function () {
+            this.classList.toggle("clicked");
+            alert(`Battery ${data.number} clicked!\nTemperature: ${data.temperature}\nVoltage: ${data.voltage}`);
+        });
     });
 });

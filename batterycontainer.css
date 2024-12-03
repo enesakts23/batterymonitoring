@@ -72,6 +72,22 @@ body.battery-container-body {
     font-weight: bold;
     border: 2px solid #3498db;
     /* Mavi dış çerçeve */
+    cursor: pointer;
+    /* Tıklanabilir olduğunu belirtmek için cursor */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Geçiş efekti */
+}
+
+.battery:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    /* Üzerine gelindiğinde hafif beyazlık efekti */
+}
+
+.battery.clicked {
+    background-color: #ffffff;
+    /* Tıklanınca arka plan rengini değiştir */
+    color: #34495e;
+    /* Tıklanınca yazı rengini değiştir */
 }
 
 .battery-number {
