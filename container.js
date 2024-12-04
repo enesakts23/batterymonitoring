@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
             type: 'pie'
         },
         series: [batteryHealthPercentage, 100 - batteryHealthPercentage],
-        labels: ['Operational', 'Faulty']
+        labels: ['Operational', 'Faulty'],
+        colors: ['#00E396', '#FF4560'] // Operational (green) and Faulty (red)
     };
 
     var chart = new ApexCharts(document.querySelector("#battery-health-chart"), options);
@@ -56,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
             notificationList.appendChild(li);
         });
     }
+
+    updateNotifications();
 
     document.getElementById("notification-list").innerHTML = '';
 
