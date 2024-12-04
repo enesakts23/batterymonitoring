@@ -1,11 +1,23 @@
 .details-container {
-    display: flex;
+    display: none;
+    /* İlk etapta görünmemesi için */
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100%;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: transparent;
+    /* Şeffaf arka plan kaldırıldı */
+    z-index: 100;
+    /* Ekranın önünde kalmasını sağlamak için */
+    position: fixed;
+    /* Konumu sabitlemek için */
+    top: 50%;
+    /* Ekranın ortasında kalmasını sağlamak için */
+    left: 50%;
+    /* Ekranın ortasında kalmasını sağlamak için */
+    transform: translate(-50%, -50%);
+    /* Konumu ortalamak için */
 }
 
 .details {

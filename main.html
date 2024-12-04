@@ -8,8 +8,10 @@
     <link rel="icon" href="icon/logonovo.png" type="image/png">
     <link rel="stylesheet" href="container.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="detailscontainer.css">
     <link rel="stylesheet" href="batterycontainer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.css">
     <style>
         body,
         html {
@@ -71,14 +73,25 @@
             </div>
         </section>
 
-
         <section class="battery-container" id="battery-container"></section>
+
+        <!-- Details Container -->
+        <div class="details-container" style="display: none;">
+            <div class="details">
+                <span class="close" onclick="closeContainer()"><i class="fas fa-times"></i></span>
+                <h3 id="battery-name">Battery Name:</h3>
+                <hr class="divider">
+                <div id="temperature-chart"></div>
+                <div id="voltage-chart"></div>
+            </div>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="main.js"></script>
     <script src="container.js"></script>
     <script src="batterycontainer.js"></script>
+    <script src="detailscontainer.js"></script>
 </body>
 
 </html>

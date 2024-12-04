@@ -46,8 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
         batteryContainer.appendChild(batteryWrapper);
 
         battery.addEventListener("click", function () {
-            this.classList.toggle("clicked");
-            alert(`Battery ${data.number} clicked!\nTemperature: ${data.temperature}\nVoltage: ${data.voltage}`);
+            // Bataryanın tıklanmasıyla details-container'ın görünür hale gelmesi
+            const detailsContainer = document.querySelector('.details-container');
+            const batteryNameElement = document.getElementById('battery-name');
+            detailsContainer.style.display = 'flex';
+            batteryNameElement.textContent = `Battery Name: ${data.number}`;
         });
     });
 });
+
+function closeContainer() {
+    const detailsContainer = document.querySelector('.details-container');
+    detailsContainer.style.display = 'none';  // details-container'ı kapattıktan sonra tamamen kaldır
+}
