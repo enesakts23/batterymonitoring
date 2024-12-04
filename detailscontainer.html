@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Container Örneği</title>
+    <link rel="stylesheet" href="detailscontainer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.css">
+</head>
+
+<body>
+    <div class="details-container">
+        <div class="details">
+            <span class="close" onclick="closeContainer()"><i class="fas fa-times"></i></span>
+            <h3 id="battery-name">Battery Name:</h3>
+            <hr class="divider">
+            <div id="temperature-chart"></div>
+            <div id="voltage-chart"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+    <script src="detailscontainer.js"></script>
+</body>
+
+</html>
