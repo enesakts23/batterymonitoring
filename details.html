@@ -1,132 +1,141 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batarya Detaylı Veriler</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <title>Battery Monitoring</title>
+    <link rel="icon" href="icon/logonovo.png" type="image/png">
+    <link rel="stylesheet" href="container.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="batterycontainer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Sayfanın aşağıya kaydırılmasını devre dışı bırakma */
         body,
         html {
-            height: 100%;
             overflow: hidden;
         }
 
-        main.content {
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            /* Sola hizala */
-            justify-content: flex-start;
-            /* Üste hizala */
-            padding: 20px;
+        main {
+            height: 100vh;
+            overflow-y: hidden;
         }
 
-        #battery-title {
-            margin-top: 10px;
-            /* Header'a daha yakın yapma */
+        .container {
+            display: none;
+            /* Ensure this section is hidden initially */
         }
 
-        #temp-chart,
-        #voltage-chart {
-            width: 100%;
-            /* Grafik genişliğini sayfa genişliğine ayarla */
-            height: 250px;
-            /* Grafik yüksekliğini azaltma */
-            margin-bottom: 20px;
+        .battery-container {
+            display: none;
+            /* Ensure this section is hidden initially */
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="header-content">
-            <span>nuvo</span>
-            <div class="right-content">
-                <img src="icon/profilepicture.png" alt="Profil Resmi" class="profile-pic">
-                <img src="icon/logout.png" alt="Logo" class="logo-link" id="logo-link">
-            </div>
-        </div>
-    </header>
     <aside class="sidebar">
-        <img src="icon/logonovo.png" alt="Logo" class="logo">
-        <h2>NUVO AKÜ İZLEME SİSTEMİ</h2>
-        <div class="dropdown-content">
-            <a href="#">Önizleme</a>
-            <a href="#">Alarmlar</a>
-            <a href="#">Detaylı veriler</a>
-            <a href="#">Öğe 4</a>
-            <a href="#">Öğe 5</a>
+        <div class="sidebar-header">
+            <img src="icon/logonovo.png" alt="Logo" class="sidebar-logo">
+            <h2>Battery Monitoring </h2>
         </div>
+        <ul>
+            <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+            <li><i class="fas fa-battery-three-quarters"></i> Battery Monitoring</li>
+            <li><i class="fas fa-user"></i> Profile</li>
+        </ul>
     </aside>
-    <main class="content">
-        <h2 id="battery-title">Batarya Detaylı Veriler</h2>
-        <div id="temp-chart"></div>
-        <div id="voltage-chart"></div>
+
+    <main>
+        <header>
+            <input type="text" placeholder="Search...">
+            <div class="icons">
+                <div class="icon flag-icon"></div>
+                <div class="icon bell-icon"><span class="notification-dot"></span></div>
+                <div class="icon profile-icon"></div>
+            </div>
+        </header>
+
+        <section class="container">
+            <div class="widget battery">
+                <h3>Battery Count</h3>
+                <p id="battery-count">16</p>
+            </div>
+            <div class="widget operational-battery">
+                <h3>Operational Batteries</h3>
+                <p id="operational-battery-count">15</p>
+            </div>
+            <div class="widget faulty-battery">
+                <h3>Faulty Batteries</h3>
+                <p id="faulty-battery-count">1</p>
+            </div>
+            <div class="widget battery-health">
+                <h3>Battery Health</h3>
+                <div id="battery-health-chart"></div>
+            </div>
+            <div class="widget notifications full-width">
+                <h3>Notifications</h3>
+                <ul id="notification-list">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="battery-container" id="battery-container"></section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="container.js"></script>
+    <script src="batterycontainer.js"></script>
     <script>
-        // URL'den batarya numarasını ve string numarasını al
-        const urlParams = new URLSearchParams(window.location.search);
-        const batteryNumber = urlParams.get('battery');
-        const stringNumber = urlParams.get('string');
+        document.addEventListener("DOMContentLoaded", function () {
 
-        // Başlığı ayarla
-        document.getElementById('battery-title').textContent = `Batarya-${batteryNumber} Detaylı Veriler (String ${stringNumber})`;
+            // Ensure both sections are hidden on page load
+            document.querySelector(".container").style.display = "none";
+            document.querySelector(".battery-container").style.display = "none";
 
-        // Örnek sıcaklık verileri
-        const temperatureData = [22, 23, 21, 20, 24, 25, 26, 27, 28, 29, 30, 31];
-        const voltageData = [3.7, 3.8, 3.6, 3.9, 3.8, 3.7, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5];
+            const containerCss = document.createElement('link');
+            containerCss.rel = 'stylesheet';
+            containerCss.href = 'container.css';
+            containerCss.id = 'container-css';
+            document.head.appendChild(containerCss);
 
-        // Sıcaklık grafiği
-        var optionsTemp = {
-            chart: {
-                type: 'line',
-                height: '250px', // Grafik yüksekliğini ayarlama
-                width: '100%' // Grafik genişliğini ayarlama
-            },
-            series: [{
-                name: 'Sıcaklık',
-                data: temperatureData,
-                color: '#1E90FF' // Açık mavi renk
-            }],
-            xaxis: {
-                categories: Array.from({ length: temperatureData.length }, (_, i) => i + 1)
-            },
-            title: {
-                text: 'Günlük Sıcaklık Verileri'
+            const batteryContainerCss = document.createElement('link');
+            batteryContainerCss.rel = 'stylesheet';
+            batteryContainerCss.href = 'batterycontainer.css';
+            batteryContainerCss.id = 'battery-container-css';
+            document.head.appendChild(batteryContainerCss);
+
+            batteryContainerCss.disabled = true;
+
+            document.querySelector(".sidebar ul li:first-child").addEventListener("click", function () {
+                toggleSections("container", "battery-container");
+            });
+
+            document.querySelector(".sidebar ul li:nth-child(2)").addEventListener("click", function () {
+                toggleSections("battery-container", "container");
+            });
+        });
+
+        function toggleSections(showSectionClass, hideSectionClass) {
+            document.querySelector(`.${hideSectionClass}`).style.display = "none";
+            document.querySelector(`.${showSectionClass}`).style.display = "grid";
+
+            document.querySelector('#container-css').disabled = showSectionClass !== "container";
+            document.querySelector('#battery-container-css').disabled = showSectionClass !== "battery-container";
+
+            const jsMap = {
+                "container": "container.js",
+                "battery-container": "batterycontainer.js"
+            };
+
+            const oldScript = document.querySelector(`script[src*="${jsMap[hideSectionClass]}"]`);
+            if (oldScript) {
+                const newScript = document.createElement('script');
+                newScript.src = jsMap[showSectionClass];
+                oldScript.replaceWith(newScript);
             }
-        };
-
-        var chartTemp = new ApexCharts(document.querySelector("#temp-chart"), optionsTemp);
-        chartTemp.render();
-
-        // Voltaj grafiği
-        var optionsVoltage = {
-            chart: {
-                type: 'line',
-                height: '250px', // Grafik yüksekliğini ayarlama
-                width: '100%' // Grafik genişliğini ayarlama
-            },
-            series: [{
-                name: 'Voltaj',
-                data: voltageData,
-                color: '#FFA500' // Turuncu renk
-            }],
-            xaxis: {
-                categories: Array.from({ length: voltageData.length }, (_, i) => i + 1)
-            },
-            title: {
-                text: 'Günlük Voltaj Verileri'
-            }
-        };
-
-        var chartVoltage = new ApexCharts(document.querySelector("#voltage-chart"), optionsVoltage);
-        chartVoltage.render();
+        }
     </script>
 </body>
 
