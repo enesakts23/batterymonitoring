@@ -13,6 +13,7 @@
     text-align: center;
 }
 
+/* Diğer widget'lar için spesifik stil ayarları */
 .widget.battery {
     background-color: #3498db;
     color: #fff;

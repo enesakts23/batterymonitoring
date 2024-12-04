@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="batterycontainer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body,
+        html {
+            overflow: hidden;
+            /* Sayfanın sağa sola ve yukarı aşağı kaymasını engeller */
+        }
+
+        main {
+            height: 100vh;
+            /* Tüm görünür alanı kaplar */
+            overflow-y: auto;
+            /* İçerik taşarsa sadece dikey kaydırma çubuğu ekler */
+        }
+    </style>
 </head>
 
 <body>
@@ -58,6 +72,7 @@
                 </ul>
             </div>
         </section>
+
 
         <section class="battery-container" id="battery-container">
             <!-- Batarya kutuları JavaScript ile dinamik olarak eklenecek -->
