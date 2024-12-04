@@ -12,9 +12,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;
-    /* Tüm widget'ların aynı kutu modeli kullanmasını sağlar */
     width: 100%;
-    /* Tüm widget'ların aynı genişlikte olmasını sağlar */
 }
 
 .widget.battery {
@@ -23,37 +21,29 @@
     height: auto;
 }
 
-/* Operational Battery widget'ı için spesifik stil */
 .widget.operational-battery {
     background-color: #2ecc71;
     color: #fff;
     height: auto;
-    /* Diğer widget'ların yüksekliğini sabit bırak */
 }
 
-/* Faulty Battery widget'ı için spesifik stil */
 .widget.faulty-battery {
     background-color: #e67e22;
     color: #fff;
     height: auto;
-    /* Diğer widget'ların yüksekliğini sabit bırak */
 }
 
-/* Battery Health widget'ı için spesifik stil */
 .widget.battery-health {
     background-color: #ffffff;
     color: #000;
     border: 2px solid #27ae60;
     height: auto;
-    /* Diğer widget'ların yüksekliğini sabit bırak */
 }
 
-/* Notifications widget'ı için spesifik stil */
 .widget.notifications {
     background-color: #ecf0f1;
     color: #000;
     height: auto;
-    /* Diğer widget'ların yüksekliğini sabit bırak */
 }
 
 .widget.full-width {

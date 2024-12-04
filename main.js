@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // İlk açılışta container'ı göster
+
   document.querySelector(".container").style.display = "grid";
   document.querySelector(".battery-container").style.display = "none";
 
-  // Tüm CSS dosyalarını ekleyelim
   const containerCss = document.createElement('link');
   containerCss.rel = 'stylesheet';
   containerCss.href = 'container.css';
@@ -16,10 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
   batteryContainerCss.id = 'battery-container-css';
   document.head.appendChild(batteryContainerCss);
 
-  // Başlangıçta container.css aktif olacak
   batteryContainerCss.disabled = true;
 
-  // Sidebar ve ikonlar için etkileşim mantığı burada eklenebilir
   document.querySelector(".sidebar ul li:first-child").addEventListener("click", function () {
     toggleSections("container", "battery-container");
   });
@@ -30,15 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function toggleSections(showSectionClass, hideSectionClass) {
-  // Gösterilecek bölümü ve saklanacak bölümü belirle
+
   document.querySelector(`.${hideSectionClass}`).style.display = "none";
   document.querySelector(`.${showSectionClass}`).style.display = "grid";
 
-  // CSS dosyalarını aktif/deaktif et
   document.querySelector('#container-css').disabled = showSectionClass !== "container";
   document.querySelector('#battery-container-css').disabled = showSectionClass !== "battery-container";
 
-  // JS dosyalarını değiştir
   const jsMap = {
     "container": "container.js",
     "battery-container": "batterycontainer.js"
