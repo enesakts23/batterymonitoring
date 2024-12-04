@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Battery Monitoring</title>
+    <link rel="icon" href="icon/logonovo.png" type="image/png">
     <link rel="stylesheet" href="container.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="batterycontainer.css">
@@ -26,11 +27,11 @@
     <aside class="sidebar">
         <div class="sidebar-header">
             <img src="icon/logonovo.png" alt="Logo" class="sidebar-logo">
-            <h2>AKÜ İZLEME </h2>
+            <h2>Battery Monitoring </h2>
         </div>
         <ul>
             <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-            <li><i class="fas fa-store"></i> Battery Monitoring</li>
+            <li><i class="fas fa-battery-three-quarters"></i> Battery Monitoring</li>
             <li><i class="fas fa-user"></i> Profile</li>
         </ul>
     </aside>
@@ -59,21 +60,19 @@
                 <p id="faulty-battery-count">1</p>
             </div>
             <div class="widget battery-health">
-                <h3>Genel Akü Sağlığı</h3>
+                <h3>Battery Health</h3>
                 <div id="battery-health-chart"></div>
             </div>
             <div class="widget notifications full-width">
-                <h3>Bildirimler</h3>
+                <h3>Notifications</h3>
                 <ul id="notification-list">
-                    <li>Yükleniyor...</li>
+                    <li>Loading...</li>
                 </ul>
             </div>
         </section>
 
 
-        <section class="battery-container" id="battery-container">
-            <!-- Batarya kutuları JavaScript ile dinamik olarak eklenecek -->
-        </section>
+        <section class="battery-container" id="battery-container"></section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

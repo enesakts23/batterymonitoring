@@ -22,9 +22,10 @@ body {
 }
 
 .sidebar-logo {
-    max-width: 100px;
-    margin-bottom: 10px;
+    width: 250px;
+    height: auto;
 }
+
 
 .sidebar ul {
     list-style: none;
