@@ -26,7 +26,6 @@ body {
     height: auto;
 }
 
-
 .sidebar ul {
     list-style: none;
     padding: 0;
@@ -55,13 +54,11 @@ header {
     align-items: center;
     padding: 20px;
     width: calc(100% - 250px);
-    /* Sidebar genişliğini çıkarıyoruz */
     background: #f8f8f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 250px;
-    /* Sidebar genişliği kadar sola hizalıyoruz */
 }
 
 header input[type="text"] {
@@ -75,9 +72,7 @@ header input[type="text"] {
     display: flex;
     gap: 10px;
     margin-left: auto;
-    /* İkonları sağda tutmak için */
     margin-right: 20px;
-    /* Sayfanın kenarından biraz uzaklaştırmak için */
 }
 
 .icons .icon {
@@ -89,6 +84,13 @@ header input[type="text"] {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icons .flag-icon,
+.icons .bell-icon,
+.icons .profile-icon {
+    margin-left: -10px;
+    /* Adjust this value to shift icons to the left */
 }
 
 .icons .flag-icon {
@@ -118,6 +120,5 @@ header input[type="text"] {
 main {
     flex: 1;
     margin-top: 60px;
-    /* Header yüksekliği kadar boşluk bırakıyoruz */
     padding: 20px;
 }
