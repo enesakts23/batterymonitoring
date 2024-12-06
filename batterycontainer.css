@@ -41,9 +41,43 @@ body.battery-container-body {
     gap: 8px 20px;
     padding: 20px;
     background-color: transparent;
-    /* Changed to transparent */
     position: relative;
     overflow: hidden;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .battery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .battery {
+        width: 80px;
+        height: 50px;
+        padding: 5px;
+    }
+
+    .battery-number {
+        font-size: 14px;
+    }
+
+    .battery-info {
+        font-size: 12px;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 600px) and (max-width: 768px) {
+    .battery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+    .battery-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .battery-wrapper {
@@ -62,10 +96,8 @@ body.battery-container-body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Değişiklik */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    /* Değişiklik */
     color: #34495e;
     font-weight: bold;
     border: 2px solid #3498db;
@@ -96,7 +128,6 @@ body.battery-container-body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Değişiklik */
     width: 100%;
 }
 
@@ -113,6 +144,49 @@ body.battery-container-body {
     width: 50px;
     text-align: center;
     margin-right: 20px;
-    /* Changed */
     box-sizing: border-box;
+}
+
+/* 580 pikselden itibaren scroll getir */
+@media (max-width: 580px) {
+    .battery-container {
+        overflow-y: auto;
+    }
+
+    .battery-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .battery-container::-webkit-scrollbar-thumb {
+        background-color: #3498db;
+        border-radius: 10px;
+    }
+}
+
+/* 451 pikselden sonra bataryaları alt alta sırala ve hem yatay hem dikey scroll ekle, container'ı dikey olarak genişlet ve aradaki mesafeyi azalt */
+@media (max-width: 451px) {
+    .battery-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        /* Yüksekliği otomatik olarak genişlet */
+        max-height: 100vh;
+        /* Taşmayı engellemek için maksimum yüksekliği belirle */
+        padding: 5px;
+        overflow-y: auto;
+        /* Dikey scroll */
+        overflow-x: auto;
+        /* Yatay scroll */
+    }
+
+    .battery-wrapper {
+        width: 100%;
+        margin-bottom: 1px;
+        /* Boşlukları azaltmak için margin'i küçülttüm */
+    }
+
+    .battery {
+        margin-bottom: 1px;
+        /* Bataryalar arasındaki boşlukları azaltmak için */
+    }
 }

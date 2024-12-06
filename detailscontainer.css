@@ -1,37 +1,30 @@
+/* Genel yapı */
 .details-container {
     display: none;
-    /* İlk etapta görünmemesi için */
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     margin: 0;
     background-color: transparent;
-    /* Şeffaf arka plan kaldırıldı */
     z-index: 100;
-    /* Ekranın önünde kalmasını sağlamak için */
     position: fixed;
-    /* Konumu sabitlemek için */
     top: 50%;
-    /* Ekranın ortasında kalmasını sağlamak için */
     left: 50%;
-    /* Ekranın ortasında kalmasını sağlamak için */
     transform: translate(-50%, -50%);
-    /* Konumu ortalamak için */
+    overflow: auto;
 }
 
 .details {
     position: relative;
-    width: 100%;
+    width: 80%;
     max-width: 800px;
-    height: 450px;
-    /* Yüksekliği biraz daha daralttık */
+    height: auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    /* İçeriğin taşmasını önlemek için */
 }
 
 .close {
@@ -56,5 +49,72 @@ h3 {
 #temperature-chart,
 #voltage-chart {
     margin-top: 20px;
+    width: 100%;
     height: 200px;
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+    .details {
+        width: 85%;
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    #temperature-chart,
+    #voltage-chart {
+        height: 150px;
+    }
+}
+
+/* Daha küçük mobil cihazlar için */
+@media (max-width: 390px) {
+    .details {
+        width: 85%;
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    #temperature-chart,
+    #voltage-chart {
+        height: 120px;
+    }
+}
+
+.switch {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 480px) {
+    .switch {
+        width: 80%;
+    }
+}
+
+@media (max-width: 390px) {
+    .switch {
+        width: 60%;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+    .details {
+        max-width: 800px;
+    }
 }
