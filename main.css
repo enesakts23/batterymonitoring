@@ -14,6 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
 }
 
 .sidebar-header {
@@ -59,20 +60,32 @@ header {
     position: fixed;
     top: 0;
     left: 250px;
+    /* Başlangıç konumunu sabit tutalım */
+    transition: width 0.3s ease, left 0.3s ease;
+    /* Geçiş ekleyelim */
 }
 
 header input[type="text"] {
+    flex: 1;
+    /* Arama çubuğu esnek genişlik kazandırmak için */
+    margin-right: 5px;
+    /* İkonlardan biraz uzaklaştırmak için */
     padding: 10px;
     border-radius: 20px;
     border: 1px solid #ddd;
-    width: 300px;
+    min-width: 5px;
+    /* Minimum genişlik daha da daraltıldı */
 }
 
 .icons {
     display: flex;
     gap: 10px;
+    flex-shrink: 0;
+    /* İkonların daralmamasını sağlamak için */
+    justify-content: flex-end;
+    /* İkonları sağa hizalayalım */
     margin-left: auto;
-    margin-right: 20px;
+    /* İkonları sağa hizalayalım */
 }
 
 .icons .icon {
@@ -90,7 +103,6 @@ header input[type="text"] {
 .icons .bell-icon,
 .icons .profile-icon {
     margin-left: -10px;
-    /* Adjust this value to shift icons to the left */
 }
 
 .icons .flag-icon {
@@ -121,4 +133,107 @@ main {
     flex: 1;
     margin-top: 60px;
     padding: 20px;
+}
+
+/* Mobile styles */
+@media (max-width: 775px) {
+    .sidebar {
+        width: 50px;
+        /* Sidebar'ı daha dar yapalım */
+    }
+
+    header {
+        width: calc(100% - 50px);
+        /* Header genişliği sidebar ile uyumlu */
+        left: 250px;
+        /* Başlangıç konumunu sabit tutalım */
+    }
+
+    header input[type="text"] {
+        margin-right: 5px;
+        flex: 1;
+        /* Arama çubuğu esnek genişlik kazandırmak için */
+        min-width: 5px;
+        /* Minimum genişlik çok daha daraltıldı */
+    }
+
+    .icons {
+        margin-right: 5px;
+        /* İkonları sola yaklaştıralım */
+        flex-shrink: 0;
+        /* İkonların daralmamasını sağlamak için */
+        justify-content: flex-end;
+    }
+
+    .battery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 776px) and (max-width: 992px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    header {
+        width: calc(100% - 150px);
+        left: 250px;
+        /* Başlangıç konumunu sabit tutalım */
+    }
+
+    header input[type="text"] {
+        flex: 1;
+        /* Arama çubuğu esnek genişlik kazandırmak için */
+        margin-right: 10px;
+        /* İkonlardan biraz uzaklaştırmak için */
+        min-width: 5px;
+        /* Minimum genişlik çok daha daraltıldı */
+    }
+
+    .icons {
+        margin-right: 10px;
+        /* İkonları sola yaklaştıralım */
+        flex-shrink: 0;
+        /* İkonların daralmamasını sağlamak için */
+        justify-content: flex-end;
+    }
+
+    .battery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 993px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    header {
+        width: calc(100% - 250px);
+        left: 250px;
+        /* Başlangıç konumunu sabit tutalım */
+    }
+
+    header input[type="text"] {
+        flex: 1;
+        /* Arama çubuğu esnek genişlik kazandırmak için */
+        margin-right: 20px;
+        /* İkonlardan biraz uzaklaştırmak için */
+        min-width: 5px;
+        /* Minimum genişlik çok daha daraltıldı */
+    }
+
+    .icons {
+        margin-right: 20px;
+        /* İkonları sola yaklaştıralım */
+        flex-shrink: 0;
+        /* İkonların daralmamasını sağlamak için */
+        justify-content: flex-end;
+    }
+
+    .battery-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
